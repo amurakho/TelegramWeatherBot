@@ -1,5 +1,5 @@
-import requests
 import json
+import requests
 import time
 
 import const
@@ -18,12 +18,12 @@ def answer_user_bot(data):
 
 
 def parse_weather_data(data):
+    weather_state = ""
     for elem in data['weather']:
         weather_state = elem['main']
     temp = round(data['main']['temp'] - 273.15, 2)
     city = data['name']
-    msg = f'The weather in {city}: Temp is {temp}, State is {weather_state}'
-    return msg
+    return f'The weather in {city}: Temp is {temp}, State is {weather_state}'
 
 
 def get_weather(location):
