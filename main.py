@@ -10,11 +10,9 @@ def answer_user_bot(data):
         'chat_id': const.MY_ID,
         'text': data
     }
-    url = const.URL.format(
-        token=const.TOKEN,
-        method=const.SEND_METH
-    )
-    response = requests.post(url, data=data)
+    url = const.URL.format(token=const.TOKEN,
+                           method=const.SEND_METH)
+    _ = requests.post(url, data=data)
 
 
 def parse_weather_data(data):
@@ -49,7 +47,8 @@ def save_update_id(update):
 
 def main():
     while True:
-        url = const.URL.format(token=const.TOKEN, method=const.UPDATE_METH)
+        url = const.URL.format(token=const.TOKEN,
+                               method=const.UPDATE_METH)
         content = requests.get(url).text
 
         data = json.loads(content)
